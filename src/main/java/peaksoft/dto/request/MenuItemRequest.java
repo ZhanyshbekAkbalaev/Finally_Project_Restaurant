@@ -1,4 +1,15 @@
 package peaksoft.dto.request;
 
-public record MenuItemRequest() {
+import lombok.Builder;
+
+@Builder
+public record MenuItemRequest(
+        String name,
+        String image,
+        int price,
+        String description,
+        Boolean isVegetarian,
+        Long restaurantId,
+        Long subcategoryId
+) {
 }
