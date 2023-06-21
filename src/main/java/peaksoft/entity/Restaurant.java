@@ -7,6 +7,8 @@ import lombok.Setter;
 
 import java.util.List;
 
+import static jakarta.persistence.CascadeType.*;
+
 @Entity
 @Table(name = "restaurants")
 @Getter
@@ -23,9 +25,9 @@ public class Restaurant {
     private int numberOfEmployees;
     private int service;
 
-    @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "restaurant", cascade = ALL)
     private List<User> users;
 
-    @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "restaurant", cascade = {DETACH,MERGE,REFRESH,REMOVE})
     private List<MenuItem> menuItems;
 }

@@ -17,8 +17,8 @@ import static jakarta.persistence.CascadeType.*;
 @Table(name = "cheque")
 public class Cheque {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cheque_seq")
-    @SequenceGenerator(name = "cheque_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cheque_gen")
+    @SequenceGenerator(name = "cheque_gen",allocationSize = 1,sequenceName = "cheque_seq")
     private Long id;
     private BigDecimal priceAverage;
 

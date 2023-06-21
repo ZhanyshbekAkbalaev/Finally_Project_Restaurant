@@ -6,9 +6,8 @@ import lombok.Builder;
 public record RestaurantRequest(
         String name,
         String location,
+        int numberOfUsers,
         String restType,
         int service
-
-
 ) {
 }

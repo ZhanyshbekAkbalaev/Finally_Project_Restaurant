@@ -8,7 +8,7 @@ import peaksoft.dto.response.SimpleResponse;
 import java.util.List;
 
 public interface MenuItemService {
-    SimpleResponse saveMenuItem(Long restaurantId , MenuItemRequest menuItemRequest);
+    SimpleResponse saveMenuItem(MenuItemRequest menuItemRequest);
     List<MenuItemResponse> getAllMenuItems(Long restaurant);
     MenuItemResponse getByIdMenuItem(Long menuItemId);
     SimpleResponse updateMenuItem(Long menuItemId,MenuItemRequest menuItemRequest);

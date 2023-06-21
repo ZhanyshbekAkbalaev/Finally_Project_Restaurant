@@ -5,6 +5,8 @@ import lombok.*;
 
 import java.util.List;
 
+import static jakarta.persistence.CascadeType.*;
+
 @Getter
 @Setter
 @Entity
@@ -14,15 +16,15 @@ import java.util.List;
 @Builder
 public class Subcategory {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "subcategory_seq")
-    @SequenceGenerator(name = "subcategory_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "subcategory_gen")
+    @SequenceGenerator(name = "subcategory_gen",sequenceName = "subcategory_seq",allocationSize = 1)
     private Long id;
     private String name;
 
-    @OneToMany(mappedBy = "subcategory", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
+    @OneToMany(mappedBy = "subcategory", cascade = {MERGE, REFRESH, DETACH})
     private List<MenuItem> menuItems;
 
-    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
+    @ManyToOne(cascade = {MERGE, REFRESH, DETACH})
     private Category category;
 
 }

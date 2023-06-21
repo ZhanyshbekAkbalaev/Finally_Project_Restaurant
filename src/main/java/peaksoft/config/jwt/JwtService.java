@@ -15,6 +15,7 @@ import peaksoft.entity.User;
 import peaksoft.repository.UserRepository;
 
 import java.security.Key;
+import java.time.ZonedDateTime;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -48,7 +49,7 @@ public class JwtService {
                 .setClaims(extractClaim)
                 .setSubject(userDetails.getUsername())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 24))
+                .setExpiration(Date.from(ZonedDateTime.now().plusMinutes(60).toInstant()))
                 .signWith(getSignInKey(), SignatureAlgorithm.HS256)
                 .compact();
     }
